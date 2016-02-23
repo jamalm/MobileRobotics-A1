@@ -1,5 +1,6 @@
 import lejos.subsumption.Arbitrator;
 import lejos.subsumption.Behavior;
+import lejos.nxt.*;
 
 public class Assignment {
 	
@@ -12,10 +13,17 @@ public class Assignment {
 		Behavior step4 = new HitWall();
 		
 		//behaviour list
-		Behavior [] steps = {step4, step3, step2 ,step1};
+		Behavior [] steps = {step1, step2, step3, step4};
 		
 		//arbitrator instance to run behaviours
 		Arbitrator control = new Arbitrator(steps);
+		
+		//introduction
+		LCD.drawString("Assignment 1");
+		Button.waitForAnyPress();
+		LCD.clear();
+		
+		//start behaviours
 		control.start();
 	}
 }
