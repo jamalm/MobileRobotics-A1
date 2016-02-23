@@ -1,7 +1,7 @@
-import lejos.subsumption.Behaviour;
+import lejos.subsumption.Behavior;
 import lejos.subsumption.Arbitrator;
 
-public class Claps implements Behaviour () {
+public class Claps implements Behavior () {
 	//fields
 	private ;
 	
