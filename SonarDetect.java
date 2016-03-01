@@ -12,6 +12,7 @@ public class SonarDetect implements Behavior () {
 	//constructor 
 	public SonarDetect(SensorPort port) {
 		sonar = new UltrasonicSensor(port);
+		pilot = new DifferentialPilot(2.25f ,5.5f, Motor.A, Motor.B);
 	}
 	
 	//Methods
@@ -20,22 +21,31 @@ public class SonarDetect implements Behavior () {
 		//implement actions here
 		suppressed = false;
 		
+		
 		//Stop and turn 180 degs
-		Motor.A.stop();
-		Motor.B.stop();
-		Motor.A.rotate(-180, true);
-		Motor.B.rotate(-180, true);
+		pilot.stop();
+		pilot.rotate(-180, true);
 		
 		//move forward 20 units and stop
+		pilot.travel(20);
+		pilot.stop();
 		
+		//turn 90 degs to the right 
+		pilot.rotate(90, true);
+		
+		pilot.forward();
+
+		while(!suppressed){
+			thread.yield();
+		}
 	}
 	
-	public suppress() {
+	public void suppress() {
 		//implement suppression here
 		suppressed = true;
 	}
 	
-	public takeControl() {
+	public boolean takeControl() {
 		return sonar.getDistance() < 25;
 	}
 
