@@ -30,6 +30,10 @@ public class HitWall implements Behavior () {
 		Motor.A.stop();
 		Motor.B.stop();
 		LCD.drawString("Stop");
+		
+		while(!suppressed) {
+			Thread.yield();
+		}
 	}
 	
 	public void suppress() {
