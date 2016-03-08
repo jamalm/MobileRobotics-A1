@@ -1,5 +1,4 @@
-import lejos.subsumption.Behavior;
-import lejos.subsumption.Arbitrator;
+import lejos.robotics.subsumption.*;
 import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -10,12 +9,16 @@ import lejos.nxt.TouchSensor;
 // Move forward until detecting a light surface underneath
 
 
-public class LightDetect implements Behavior () {
+public class LightDetect implements Behavior{
 	//fields
+	private boolean suppressed = false;
+	private LightSensor light;
+	private DifferentialPilot pilot;
 	
 	//constructor 
-	public LightDetect(SensorPort port) {
-		LightSensor light = new LightSensor(SensorPort.S1);
+	public LightDetect() {
+		light = new LightSensor(SensorPort.S3);
+		pilot = new DifferentialPilot(2.25f ,5.5f, Motor.A, Motor.B);
 	}
 	
 	//Methods
@@ -24,8 +27,7 @@ public class LightDetect implements Behavior () {
 		suppressed = false;
 		
 		//Stop
-		Motor.A.stop();
-		Motor.B.stop();
+		pilot.stop();
 		
 		// Turn 90 degrees to the left
 		pilot.rotate(-90);
@@ -43,7 +45,7 @@ public class LightDetect implements Behavior () {
 	}
 	
 	public boolean takeControl() {
-		return light.getLightValue() > 45
+		return light.getLightValue() > 45;
 	}
 
 }
