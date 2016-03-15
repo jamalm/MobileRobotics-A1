@@ -10,8 +10,8 @@ import lejos.nxt.TouchSensor;
  * Move forward until the touch sensor causes the robot to stop
  * Print stop
  * 
- * @author Jamal Mahmoud
- * @author Minni Hiltunen
+ * @author Jamal Mahmoud - C13730921
+ * @author Minni Hiltunen - D15123113
  */
 
 public class HitWall implements Behavior{

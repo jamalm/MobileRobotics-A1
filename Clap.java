@@ -9,8 +9,8 @@ import lejos.nxt.SoundSensor;
 /*
  * Behavior class to listen for a clap and then move forward 
  * 
- * @author Jamal Mahmoud
- * @author Minni Hiltunen
+ * @author Jamal Mahmoud - C13730921
+ * @author Minni Hiltunen - D15123113
  */
 
 

@@ -6,8 +6,8 @@ import lejos.robotics.navigation.DifferentialPilot;
 /*
  * Sonar detects a surface in front of it and follows a list of actions
  * 
- * @author Jamal Mahmoud
- * @author Minni Hiltunen
+ * @author Jamal Mahmoud - C13730921
+ * @author Minni Hiltunen - D15123113
  */
 
 public class SonarDetect implements Behavior{
