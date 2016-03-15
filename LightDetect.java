@@ -21,6 +21,10 @@ public class LightDetect implements Behavior{
 		pilot = new DifferentialPilot(2.25f ,5.5f, Motor.A, Motor.B);
 	}
 	
+	public LightDetect(String test){
+		testValue();
+	}
+	
 	//Methods
 	public void action() {
 		//implement actions here
@@ -47,5 +51,5 @@ public class LightDetect implements Behavior{
 	public boolean takeControl() {
 		return light.getLightValue() > 45;
 	}
-
 }
+
