@@ -46,7 +46,7 @@ public class SonarDetect implements Behavior{
 	}
 	
 	public boolean takeControl() {
-		return sonar.getDistance() < 25;
+		return sonar.getDistance() < 35;
 	}
 
 }
