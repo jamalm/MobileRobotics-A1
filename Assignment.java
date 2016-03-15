@@ -12,7 +12,7 @@ public class Assignment {
 		Behavior step4 = new HitWall();
 		
 		//behaviour list
-		Behavior [] steps = {step4, step3, step2, step1};
+		Behavior [] steps = {step1, step2, step3, step4};
 		
 		//arbitrator instance to run behaviours
 		Arbitrator control = new Arbitrator(steps);
