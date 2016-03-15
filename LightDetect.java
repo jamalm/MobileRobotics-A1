@@ -6,10 +6,17 @@ import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 
-// Move forward until detecting a light surface underneath
 
+
+/*
+ * Move forward until detecting a light surface underneath
+ * 
+ * @author Jamal Mahmoud
+ * @author Minni Hiltunen
+ */
 
 public class LightDetect implements Behavior{
+
 	//fields
 	private boolean suppressed = false;
 	private LightSensor light;
@@ -19,10 +26,6 @@ public class LightDetect implements Behavior{
 	public LightDetect() {
 		light = new LightSensor(SensorPort.S3);
 		pilot = new DifferentialPilot(2.25f ,5.5f, Motor.A, Motor.B);
-	}
-	
-	public LightDetect(String test){
-		testValue();
 	}
 	
 	//Methods
@@ -35,20 +38,24 @@ public class LightDetect implements Behavior{
 		
 		// Turn 90 degrees to the left
 		pilot.rotate(-90);
-		
+		//move forward again
 		pilot.forward();
 		
+		//wait to be suppressed
 		while(!suppressed){
 			Thread.yield();
 		}
 	}
 	
+	//suppress behavior
 	public void suppress() {
 		//implement suppression here
 		suppressed = true;
 	}
 	
+	//let behavior take control
 	public boolean takeControl() {
+		//return true if light units go over 45
 		return light.getLightValue() > 45;
 	}
 }

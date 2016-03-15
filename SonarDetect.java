@@ -3,7 +3,15 @@ import lejos.robotics.subsumption.*;
 import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 
+/*
+ * Sonar detects a surface in front of it and follows a list of actions
+ * 
+ * @author Jamal Mahmoud
+ * @author Minni Hiltunen
+ */
+
 public class SonarDetect implements Behavior{
+	
 	//fields
 	private UltrasonicSensor sonar;
 	private boolean suppressed = false;
@@ -33,19 +41,24 @@ public class SonarDetect implements Behavior{
 		//turn 90 degs to the right 
 		pilot.rotate(90);
 		
+		//move forward again
 		pilot.forward();
-
+		
+		//wait to be suppressed
 		while(!suppressed){
 			Thread.yield();
 		}
 	}
 	
+	// allows behavior to be suppressed
 	public void suppress() {
 		//implement suppression here
 		suppressed = true;
 	}
 	
+	//Allows behavior to take control
 	public boolean takeControl() {
+		//returns true if object is less than 35 units distance from sonar
 		return sonar.getDistance() < 35;
 	}
 
